@@ -8,20 +8,6 @@ A simple C++ reflection lib. (Single header only!)
 struct X { int a; int b; };
 // mirror::Reflection<X> is defined by following sentence.
 MIRROR_REFLECTION_DEFINE(X, a, b);
-
-void test() {
-  X x{1, 2};
-
-  // X&
-  mirror::Reflection<X>::ForeachField(Printer(), x);  // a = 1, b = 2, 
-
-  std::cout << std::endl;
-  mirror::Reflection<X>::ForeachField(Printer(), X(x));  // a = 1, b = 2, 
-  std::cout << std::endl;
-  mirror::Reflection<X>::Field<1>::get(x) = 42;
-  mirror::Reflection<X>::ForeachField(Printer(), x);  // a = 1, b = 42, 
-  std::cout << std::endl;
-}
 ```
 
 ## Foreach API
