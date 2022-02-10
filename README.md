@@ -5,7 +5,7 @@ A simple C++ reflection lib. (Single header only!)
 ```
 #include "mirror.h"
 
-struct X { int a; int b; };
+struct X { short a; int b; };
 // mirror::Reflection<X> is defined by following sentence.
 MIRROR_REFLECTION_DEFINE(X, a, b);
 ```
