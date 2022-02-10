@@ -46,6 +46,12 @@ struct ReflectionDetailsError {
 void operator<<(ReflectionDetailsGetter, ReflectionDetailsError);
 
 template<typename T>
+struct Enable {
+  using Details = decltype(std::declval<ReflectionDetailsGetter>() << std::declval<T>());
+  static constexpr bool value = !(std::is_same<Details, void>::value);
+};
+
+template<typename T>
 struct ReflectionDetailsImpl {
   using Details = decltype(std::declval<ReflectionDetailsGetter>() << std::declval<T>());
   static_assert(!std::is_same<Details, void>::value,
